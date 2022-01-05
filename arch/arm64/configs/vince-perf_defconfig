@@ -424,6 +424,85 @@ CONFIG_BLK_DEV_RAM_SIZE=8192
 CONFIG_HDCP_QSEECOM=y
 CONFIG_QSEECOM=y
 CONFIG_UID_SYS_STATS=y
+# CONFIG_UID_SYS_STATS_DEBUG is not set
+# CONFIG_MEMORY_STATE_TIME is not set
+# CONFIG_QPNP_MISC is not set
+CONFIG_FORCE_FAST_CHARGE=y
+CONFIG_BATTERY_SAVER=y
+# CONFIG_C2PORT is not set
+
+#
+# EEPROM support
+#
+# CONFIG_EEPROM_AT24 is not set
+# CONFIG_EEPROM_AT25 is not set
+# CONFIG_EEPROM_LEGACY is not set
+# CONFIG_EEPROM_MAX6875 is not set
+# CONFIG_EEPROM_93CX6 is not set
+# CONFIG_EEPROM_93XX46 is not set
+
+#
+# Texas Instruments shared transport line discipline
+#
+# CONFIG_TI_ST is not set
+# CONFIG_SENSORS_LIS3_SPI is not set
+# CONFIG_SENSORS_LIS3_I2C is not set
+
+#
+# Altera FPGA firmware download module
+#
+# CONFIG_ALTERA_STAPL is not set
+
+#
+# Intel MIC Bus Driver
+#
+
+#
+# SCIF Bus Driver
+#
+
+#
+# VOP Bus Driver
+#
+
+#
+# Intel MIC Host Driver
+#
+
+#
+# Intel MIC Card Driver
+#
+
+#
+# SCIF Driver
+#
+
+#
+# Intel MIC Coprocessor State Management (COSM) Drivers
+#
+
+#
+# VOP Driver
+#
+# CONFIG_ECHO is not set
+# CONFIG_CXL_BASE is not set
+# CONFIG_CXL_AFU_DRIVER_OPS is not set
+
+#
+# FingerprintCard fingerprint driver
+#
+# CONFIG_FPR_FPC is not set
+
+#
+# Fingerprint boost driver
+#
+CONFIG_FINGERPRINT_BOOST=y
+
+#
+# SCSI device support
+#
+CONFIG_SCSI_MOD=y
+# CONFIG_RAID_ATTRS is not set
 CONFIG_SCSI=y
 CONFIG_BLK_DEV_SD=y
 CONFIG_CHR_DEV_SG=y
@@ -1019,5 +1098,3 @@ CONFIG_SND_SOC_TAS2557=y
 CONFIG_TAS2557_REGMAP=y
 CONFIG_TAS2557_CODEC=y
 CONFIG_TAS2557_MISC=y
-CONFIG_FORCE_FAST_CHARGE=y
-CONFIG_BATTERY_SAVER=y
