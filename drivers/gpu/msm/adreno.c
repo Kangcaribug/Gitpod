@@ -1452,7 +1452,7 @@ static int adreno_probe(struct platform_device *pdev)
 	}
 
 #ifdef CONFIG_INPUT
-	if (!device->pwrctrl.input_disable) {
+	{
 		adreno_input_handler.private = device;
 		/*
 		 * It isn't fatal if we cannot register the input handler.  Sad,
