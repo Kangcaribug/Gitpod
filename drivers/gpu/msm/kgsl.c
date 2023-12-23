@@ -1,5 +1,5 @@
 /* Copyright (c) 2008-2021, The Linux Foundation. All rights reserved.
- * Copyright (c) 2022 Qualcomm Innovation Center, Inc. All rights reserved.
+ * Copyright (c) 2022-2023, Qualcomm Innovation Center, Inc. All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -2280,6 +2280,7 @@ static int kgsl_setup_dmabuf_useraddr(struct kgsl_device *device,
 	vma = find_vma(current->mm, hostptr);
 
 	if (vma && vma->vm_file) {
+                int fd;
 		ret = check_vma_flags(vma, entry->memdesc.flags);
 		if (ret) {
 			up_read(&current->mm->mmap_sem);
@@ -2300,8 +2301,20 @@ static int kgsl_setup_dmabuf_useraddr(struct kgsl_device *device,
 		 * refcount
 		 */
 		get_file(vma->vm_file);
+                if (fd) {
+                        dmabuf = dma_buf_get(fd - 1);
+                        if (IS_ERR(dmabuf)) {
+                                up_read(&current->mm->mmap_sem);
+                                return PTR_ERR(dmabuf);
+                        }
 
 		dmabuf = vma->vm_file->private_data;
+                if (dmabuf != vma->vm_file->private_data) {
+                                dma_buf_put(dmabuf);
+                                up_read(&current->mm->mmap_sem);
+                                return -EBADF;
+                      }
+               }
 	}
 
 	if (IS_ERR_OR_NULL(dmabuf)) {
